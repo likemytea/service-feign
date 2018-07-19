@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSON;
 import com.chenxing.common.result.BaseResult;
+import com.chenxing.common3.test.Test1;
 import com.chenxing.servicefeign.entity.Test01;
 import com.chenxing.servicefeign.outeriface.Servicehi;
 import com.chenxing.servicefeign.service.Test01Service;
@@ -68,7 +69,8 @@ public class HiController {
 	@RequestMapping("/getFromRedis")
 	public String getFromRedis() { // 这里用于测试，key值可以自定义实现
 		// JSONObject jsonObject = (JSONObject) redisService.get("123456");
-		return JSON.toJSONString(redisService.get("123456"));
+		Test1 t = new Test1();
+		return JSON.toJSONString(redisService.get("123456")) + t.get0();
 	}
 
 }
