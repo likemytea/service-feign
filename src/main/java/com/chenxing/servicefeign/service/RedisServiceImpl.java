@@ -11,7 +11,7 @@ import com.chenxing.servicefeign.serviceI.RedisService;
 @Service
 public class RedisServiceImpl implements RedisService {
 	@Resource
-	private RedisTemplate<String, Object> redisTemplate; // stringRedisTemplate只能缓存key-value的String类型
+	private RedisTemplate<String, Object> redisTemplate;
 
 	@Override
 	public void set(String key, Object value) {

@@ -21,4 +21,10 @@ public class JavaConfig {
 	public MyJdbcTemplate myJdbcTemplate(DataSource dataSource) {
 		return new MyJdbcTemplate(dataSource);
 	}
+	//
+	// @Bean
+	// public DistributedLockHandler distributedLockHandler(RedisTemplate<String,
+	// Object> redisTemplate) {
+	// return new DistributedLockHandler(redisTemplate);
+	// }
 }
