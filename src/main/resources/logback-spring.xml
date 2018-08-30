@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
     <configuration debug="false" scan="true" scanPeriod="300 seconds">
-        <contextName>logback001</contextName>
+        <contextName>feign</contextName>
      <!--    <property name="log.path" value="e:\\logback.log" /> -->
         
 	    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
@@ -17,13 +17,13 @@
         
     <appender name="file"
         class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/var/log/applog/logback001.log</file>
+        <file>/var/log/applog/feign.log</file>
 	    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
 	        <level>INFO</level>
 	    </filter>        
 		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
 		  <!-- 每天一归档 -->
-		  <fileNamePattern>/var/log/applog/logback001-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+		  <fileNamePattern>/var/log/applog/feign-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
 		   <!-- 单个日志文件最多 50MB, 90天的日志周期，最大不能超过2GB -->
 		   <maxFileSize>50MB</maxFileSize>
 		   <maxHistory>90</maxHistory>

@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
@@ -30,18 +31,19 @@ import com.chenxing.servicefeign.entity.Test01;
 public class Test01Dao {
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 	@Autowired
-	private MyJdbcTemplate myjdbcTemplate;
+	@Qualifier("myJdbcTemplate")
+	private MyJdbcTemplate myJdbcTemplate;
 
 	public int updateName(String id, String name) {
 		String sql = "update test_01 set name=? where id=?";
-		int rs = myjdbcTemplate.update(sql, name, id);
+		int rs = myJdbcTemplate.update(sql, name, id);
 		return rs;
 	}
 
 	public int findMessage(String id, String name, int currentpage, int pagesize) {
 
 		try {
-			DataSource ds = myjdbcTemplate.getDataSource();
+			DataSource ds = myJdbcTemplate.getDataSource();
 			ds.getLoginTimeout();
 		} catch (SQLException e1) {
 			e1.printStackTrace();
@@ -58,7 +60,7 @@ public class Test01Dao {
 			e.printStackTrace();
 		}
 
-		PaginationResult<?> ms = myjdbcTemplate.queryForPage(sql, pagination, new RowMapper<Test01>() {
+		PaginationResult<?> ms = myJdbcTemplate.queryForPage(sql, pagination, new RowMapper<Test01>() {
 			@Override
 			public Test01 mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Test01 t = new Test01();
