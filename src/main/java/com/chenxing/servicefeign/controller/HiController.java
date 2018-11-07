@@ -3,6 +3,9 @@
  */
 package com.chenxing.servicefeign.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +47,14 @@ public class HiController {
 		long start = System.currentTimeMillis();
 		String res = null;
 		try {
-			res = servicehi.sayHiFromClient(name);
+			Test01 t = new Test01();
+			t.setId("this is changeless test id");
+			t.setName(name);
+			t.setXxxxxxxxx("特别说明");
+			Map mp = new HashMap();
+			mp.put("特别验证", "验证结果ddd");
+			t.setTm(mp);
+			res = servicehi.sayHiFromClient(t);
 			res += "feign版本2.5";
 			int resaa = test01Service.updateName(id, name, currentpage, pagesize);
 			res = res + "访问数据库结果：" + resaa;
